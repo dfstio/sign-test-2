@@ -36,22 +36,26 @@ export default function SignTest() {
 
   async function signButton() {
     setLoading(true);
-    await sign(value);
+    console.log("signing...");
+    console.time("sign");
+    const result = await sign(value);
+    console.timeEnd("sign");
+    console.log("signed:", result);
     setLoading(false);
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <div className="max-w-lg px-4 py-8 bg-white rounded-lg shadow-md">
-        <div className="mb-6 text-center">
+    <div className="dark:invert flex flex-col items-center justify-center min-h-screen bg-gray-100">
+      <div className="dark:invert max-w-lg px-4 py-8 bg-white rounded-lg shadow-md">
+        <div className="dark:invert mb-6 text-center">
           <h1 className="text-3xl font-bold">PROVE TX IN THE CLOUD</h1>
         </div>
-        <div className="mb-4">
+        <div className="dark:invert mb-4">
           <Label className="mb-2" htmlFor="amount">
             Value
           </Label>
           <Input
-            className="w-full"
+            className="dark:invert w-full"
             id="amount"
             min="1"
             placeholder="Enter an amount greater than 0"
@@ -59,7 +63,7 @@ export default function SignTest() {
             onChange={(e) => setValue(parseInt(e.target.value))}
           />
         </div>
-        <Button className="w-full" onClick={signButton}>
+        <Button className="dark:invert w-full" onClick={signButton}>
           {loading === false ? (
             <Fragment key=".0">Sign</Fragment>
           ) : (

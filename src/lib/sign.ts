@@ -1,10 +1,8 @@
-"use client";
-
-import { contractCloud } from "./cloud";
-//import { contract } from "./contract";
+"use server";
 
 export async function sign(value: number) {
-  console.log(value);
-  return await contractCloud(value);
-  //return await contract(value);
+  console.log("sign 1", value);
+  const sum = value + 10;
+  console.log("sign 2", sum);
+  return sum;
 }
