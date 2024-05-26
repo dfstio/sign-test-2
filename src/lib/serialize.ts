@@ -3,7 +3,7 @@
 export function serializeTransaction(tx: any) {
   const length = tx.transaction.accountUpdates.length;
   let i;
-  let blindingValues: any[] = [];
+  let blindingValues = [];
   for (i = 0; i < length; i++) {
     const la = tx.transaction.accountUpdates[i].lazyAuthorization;
     if (
