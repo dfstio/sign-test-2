@@ -14,10 +14,17 @@ export async function contractCloud(
     address = accounts[0];
     console.log("Address", address);
   } else return { isSent: false };
-  const { PublicKey, Mina, Field, fetchAccount } = await import("o1js");
+  console.log("step1");
+  const { PublicKey, Mina, Field, fetchAccount, initializeBindings } =
+    await import("o1js");
+  console.log("step2");
+  await initializeBindings();
+  console.log("step3");
 
   const sender = PublicKey.fromBase58(address);
+  console.log("step4");
   console.log("Sender", sender.toBase58());
+  console.log("step5");
   const { SignTestContract, accountBalanceMina, initBlockchain } = await import(
     "minanft"
   );
