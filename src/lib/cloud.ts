@@ -1,3 +1,5 @@
+"use client";
+
 import { serializeTransaction } from "./serialize";
 import { sendTransaction } from "./send";
 

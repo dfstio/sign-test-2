@@ -1,3 +1,5 @@
+"use client";
+
 export function serializeTransaction(tx: any) {
   const length = tx.transaction.accountUpdates.length;
   let i;

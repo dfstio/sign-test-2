@@ -1,3 +1,5 @@
+"use client";
+
 export async function contract(value: number): Promise<string> {
   const { PublicKey, Mina, Field, fetchAccount, UInt64 } = await import("o1js");
   const { SignTestContract } = await import("minanft");
