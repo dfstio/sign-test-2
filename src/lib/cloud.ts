@@ -5,11 +5,6 @@ export async function contractCloud(
   value: number
 ): Promise<{ isSent: boolean; hash?: string }> {
   console.log("Contract cloud", value);
-  const { PublicKey, Mina, Field, fetchAccount } = await import("o1js");
-  const { SignTestContract, accountBalanceMina, initBlockchain } = await import(
-    "minanft"
-  );
-  await initBlockchain("devnet");
   const accounts = await (window as any)?.mina?.requestAccounts();
   console.log("Accounts", accounts);
   let address = "";
@@ -17,9 +12,15 @@ export async function contractCloud(
     address = accounts[0];
     console.log("Address", address);
   } else return { isSent: false };
+  const { PublicKey, Mina, Field, fetchAccount } = await import("o1js");
 
   const sender = PublicKey.fromBase58(address);
   console.log("Sender", sender.toBase58());
+  const { SignTestContract, accountBalanceMina, initBlockchain } = await import(
+    "minanft"
+  );
+  await initBlockchain("devnet");
+
   console.log("Sender balance", await accountBalanceMina(sender));
   const contractAddress =
     "B62qk7nXjEzGJdyQFNVs5UauASTQJgiJSBpHJmDcFTiYQrDDTGDsNFT";
