@@ -1,4 +1,4 @@
-"use server";
+"use client";
 
 export async function sign(value: number) {
   console.log("sign 1", value);
